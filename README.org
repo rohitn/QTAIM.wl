@@ -22,10 +22,12 @@ purposes, especially creating highly customized graphics.
 ** MathLink Executable
 
 In order to use this code, you must build a MathLink executable. You
-then have to patch up the code to use it. An example:
+then have to patch up the code to use it. An example, using MacPorts
+gfortran and MathLink's mcc:
 
 #+BEGIN_SRC bash
-  gfortran-mp10 -O3 -fPIC -c -o read_wfn.o read_wfn.f90
+  gfortran-mp-10 -O3 -fPIC -c -o read_wfn.o read_wfn.f90
+  # mprep
   mcc read_wfn.tm read_wfn.o read_wfn.tm main.c -o read_wfn
 #+END_src
 
@@ -83,7 +85,7 @@ and composite:
 
 and in 3D:
 
-https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-contour-plot-of-electron-density-of-water.png?raw=true
+https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-3d-of-electron-gradient-of-water.png?raw=true
 
 ** (Negative of) Laplacian of Electron Density
 
@@ -98,7 +100,6 @@ https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-contour-plo
 and the plane that shows the pile-up in pink, above and below the plane:
 
 https://github.com/ecbrown/QTAIM.wl/blob/master/resource/contour-plot-of-laplacian-of-electron-density-of-water.png?raw=true
-
   
 
 ** Atomic Basin Delineation (WIP)
