@@ -85,7 +85,7 @@ and composite:
 
 and in 3D:
 
-https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-3d-of-electron-density-gradient-of-water.png?raw=true
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-3d-of-electron-density-gradient-of-water.png?raw=true]]
 
 ** (Negative of) Laplacian of Electron Density
 
