@@ -1,0 +1,6 @@
+resource filter=lfs diff=lfs merge=lfs -text
+BuildPaclet.nb filter=lfs diff=lfs merge=lfs -text
+QTAIM filter=lfs diff=lfs merge=lfs -text
+QTAIM-0.0.1.paclet filter=lfs diff=lfs merge=lfs -text
+resource/** filter=lfs diff=lfs merge=lfs -text
+QTAIM/** filter=lfs diff=lfs merge=lfs -text
