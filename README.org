@@ -75,11 +75,11 @@ then have to patch up the code to use it. An example:
    union of all steepest ascent paths through the electron density and
    the attractor.
    
-[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-of-electron-density-of-water.png?raw=true]]
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-of-electron-density-gradient-of-water.png?raw=true]]
 
 and composite:
 
-https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-contour-plot-of-electron-density-of-water.png?raw=true
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-contour-plot-of-electron-density-gradient-of-water.png?raw=true]]
 
 and in 3D:
 
@@ -93,7 +93,7 @@ https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-contour-plo
    points in the Laplacian as it does in the electron density.
 
    
-[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/slice-contour-plot-of-electron-density-laplacian-of-water.png?raw=true]]
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/slice-contour-plot-3d-of-electron-density-laplacian-of-water.png?raw=true]]
 
 and the plane that shows the pile-up in pink, above and below the plane:
 
