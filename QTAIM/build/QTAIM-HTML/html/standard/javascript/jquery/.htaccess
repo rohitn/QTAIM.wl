@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:77b2c48b1f72ac1ef27e90d7d323b67caada840d193c932a25b358fdd6e52b39
-size 253
+<FilesMatch "\.js\.gz$">
+ForceType text/javascript
+AddEncoding gzip .gz
+</FilesMatch>
+
+RewriteEngine On
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_FILENAME}.gz -f
+RewriteRule (.*)\.js$ %{REQUEST_URI}.gz [L]
+ForceType text/javascript

@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4a637aef6e254672de889fcc9c23312af78918b22a78363f68155434a7a142f1
-size 146
+Resources[
+    Version[1],
+    ExecutionBuildCommand["<<QTAIM`"],
+    Paclet[
+        PacletFolder["QTAIM"],
+        FunctionPaclet[False]
+    ]
+]

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:06f08de7c743d4afc263fb0f053575f9027cf13eeb3feb47f5f817a1b8d70dd4
-size 399
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>QTAIM</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.wolfram.eclipse.MEET.MathematicaProjectBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.wolfram.eclipse.MEET.SimpleMathematicaNature</nature>
+	</natures>
+</projectDescription>
