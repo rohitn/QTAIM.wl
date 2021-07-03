@@ -1,4 +1,109 @@
+* Notes
+** Disclaimer: This is experimental code, use at your own risk.
+  
+** Please note that this repository uses Git LFS.  You must:
 
+#+BEGIN_SRC bash
+git lfs clone https://github.com/ecbrown/QTAIM.wl.git
+#+END_src
 
+* What
+
+Wolfram Language (Mathematica) Package for computations involving the
+Quantum Theory of Atoms In Molecules (QTAIM)
+
+* Why
+
+I have always wanted a high-level Mathematica interface to
+commonly-performed QTAIM tasks. This is for both research and teaching
+purposes, especially creating highly customized graphics.
+
+* Installation Notes
+** MathLink Executable
+
+In order to use this code, you must build a MathLink executable. You
+then have to patch up the code to use it. An example:
+
+#+BEGIN_SRC bash
+  gfortran-mp10 -O3 -fPIC -c -o read_wfn.o read_wfn.f90
+  mcc read_wfn.tm read_wfn.o read_wfn.tm main.c -o read_wfn
+#+END_src
+
+* Example Uses
+
+** Wavefunctions
+   - WFX (not WFN yet, needs to be hooked up)
+   - PySCF (examples give full-valence CASSCF of water)
+  
+** Electron Density of Water (Center Planes)
+
+   Mathematica 12 has beautiful slice plots:
+   
 [[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/center-planes-of-water-electron-density.png?raw=true]]
+
+
+** Locate Nuclear Critical Points (and Plot Them)
+   The first task is locate the nuclear critical points:
+   
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/nuclear-critical-points-of-water.png?raw=true]]
+
+** Locate Bond Critical Points (and Plot Them)
+   The second task is locate the bond critical points. This uses a
+   graphical technique inside of Mathematica. There are no heuristics.
+   
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/bond-critical-points-of-water.png?raw=true]]
+
+
+** Electron Density of Water (Contour Plot)
+
+  Symmetrical molecules contain a lot of information along planes.
+   
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/contour-plot-of-electron-density-of-water.png?raw=true]]
+
+
+** Electron Density of Water (Contour Plot)
+
+  It is easy to compose images with different quantities. The bond
+  paths shown in the 3D model above can be projected onto the plane:
+   
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/contour-plot-of-electron-density-of-water-with-bond-paths.png?raw=true]]
+
+
+** Electron Density Gradient of Water (Stream Plots)
+
+   In the QTAIM, atoms are defined by regions of space that are the
+   union of all steepest ascent paths through the electron density and
+   the attractor.
+   
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-of-electron-density-of-water.png?raw=true]]
+
+and composite:
+
+https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-contour-plot-of-electron-density-of-water.png?raw=true
+
+and in 3D:
+
+https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-contour-plot-of-electron-density-of-water.png?raw=true
+
+** (Negative of) Laplacian of Electron Density
+
+   "Lone Pairs" of electrons can be located by finding maxima in the
+   negative of the Laplacian of the electron density.  A feature of
+   QTAIM.wl is that is uses the same techniques to find critical
+   points in the Laplacian as it does in the electron density.
+
+   
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/slice-contour-plot-of-electron-density-laplacian-of-water.png?raw=true]]
+
+and the plane that shows the pile-up in pink, above and below the plane:
+
+https://github.com/ecbrown/QTAIM.wl/blob/master/resource/contour-plot-of-laplacian-of-electron-density-of-water.png?raw=true
+
+  
+
+** Atomic Basin Delineation (WIP)
+
+** Atomic Integration (WIP)
+
+  
 
