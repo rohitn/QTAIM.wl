@@ -99,8 +99,7 @@ https://github.com/ecbrown/QTAIM.wl/blob/master/resource/stream-plot-3d-of-elect
 
 and the plane that shows the pile-up in pink, above and below the plane:
 
-https://github.com/ecbrown/QTAIM.wl/blob/master/resource/contour-plot-of-laplacian-of-electron-density-of-water.png?raw=true
-
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/contour-plot-of-laplacian-of-electron-density-of-water.png?raw=true]]
 
 ** Atomic Basin Delineation (WIP)
 
