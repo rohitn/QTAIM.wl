@@ -12,30 +12,71 @@ git lfs clone https://github.com/ecbrown/QTAIM.wl.git
 Wolfram Language (Mathematica) Package for computations involving the
 Quantum Theory of Atoms In Molecules (QTAIM)
 
+Q. Are atoms discernible in molecules? 
+
+A. Yes, an atom can be defined as the union of steepest ascent
+gradient paths through the electron density, and its attractor. These
+atoms are individually proper quantum systmes exhibiting the same
+boundary conditions that are applied to the molecule as a whole.
+
+[[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/atoms-are-defined-as-the-union-of-gradient-paths-and-attractor.png?raw=true]]]]
+
+
 * Why
 
 I have always wanted a high-level Mathematica interface to
 commonly-performed QTAIM tasks. This is for both research and teaching
 purposes, especially creating highly customized graphics.
 
+A key characteristic of Mathematica is that can create very high
+quality graphics and in such a way that they are adaptively sampled,
+in the space of a graphics routine, i.e. Cartesian, rather than
+e.g. spherical polar grids. This reduces a certain kind of artifact
+that I often see. (Though this can be done when appropriate.)
+
+Also, Wolfram Language/Mathematica has a nice graphics grammar, that
+make composing tailored graphics easy and possible.
+
+Wolfram Engine is basically free for certain use, so there's much less
+to complain about concerning Wolfram Language as an implementation. A
+determined person can figure it out. :-)
+
 * Installation Notes
 ** MathLink Executable
 
 In order to use this code, you must build a MathLink executable. You
 then have to patch up the code to use it. An example, using MacPorts
-gfortran and MathLink's mcc:
+gfortran and MathLink's mcc in my PATH variable (I may have hacked mcc
+script in a couple places to first find gcc-mp-10 I can't recall):
 
 #+BEGIN_SRC bash
-  gfortran-mp-10 -O3 -fPIC -c -o read_wfn.o read_wfn.f90
-  # mprep
-  mcc read_wfn.tm read_wfn.o read_wfn.tm main.c -o read_wfn
+  export PATH=/Applications/Mathematica.app/Contents/SystemFiles/Links/MathLink/DeveloperKit/MacOSX-x86-64/CompilerAdditions:${PATH}
+  gfortran-mp-10 -fopenmp -O3 -fPIC -c -o qtaim.o qtaim.f90
+  mcc -b64 qtaim.o qtaim.tm main.c -o qtaim
 #+END_src
+
+This is because the electron density and gradient evaluations are so
+plentiful and expensive, that they must be executed in a compiled
+language.
+
+Another reason is that the WFN format is abundant and it's
+Fortran-formatted. So bite the bullet and have a Fortran/MathLink
+dependency.
+
+An advantage is that it is a mechanism for interfacing with other
+codes.  One simply needs to add C/Fortran code and write the interface
+like the example for rho1.
 
 * Example Uses
 
 ** Wavefunctions
-   - WFX (not WFN yet, needs to be hooked up)
+   - WFX, WFN import
    - PySCF (examples give full-valence CASSCF of water)
+#+BEGIN_SRC bash
+  pip install pyscf
+  pip install pyscf[geomopt]
+  ...
+#+END_src
   
 ** Electron Density of Water (Center Planes)
 
@@ -97,13 +138,66 @@ and in 3D:
    
 [[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/slice-contour-plot-3d-of-electron-density-laplacian-of-water.png?raw=true]]
 
-and the plane that shows the pile-up in pink, above and below the plane:
+and the plane that shows the pile-up in pink, above and below the plane which protrudes toward the viewer in the 3D version:
 
 [[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/contour-plot-of-laplacian-of-electron-density-of-water.png?raw=true]]
 
 ** Atomic Basin Delineation (WIP)
-
+ 
 ** Atomic Integration (WIP)
 
-  
+* Noteworthy Features (Incomplete Laundry List)
+  - Infinite-order analytical partial derivatives based on two
+    applications of Leibniz Product Rule of Cartesian GTOs. The best
+    way to find roots is with Hessian information.  Since the
+    Laplacian of the electron density already needs second
+    derivatives, its Hessian needs fourth order derivatives! This is
+    too high a derivative to hand code, and everything here is very
+    stiff for numerical differentiation.  Written in Modern Fortran.
+  - [[https://aoterodelaroza.github.io/critic2][Critic2]] / AIMAll / MultiWFN etc. are great and I recommend these
+    results be checked against them
+  - Molecular graphs are computed using "J.M."'s StackExchange for 3D
+    critical point location. This technique generalizes to fields for
+    which there may not be heuristics for searching, e.g. bond paths
+    between two nuclear critical points.  This includes the Laplacian
+    field, as well all other imaginable, such as Kinetic Energy
+    Density topology.
+  - Data generated adaptively depending on task.  Eschews precomputed
+    grids.
+  - Adams-Bashforth-Moulton (ABM) integrator with variable order/step
+    due to Shampine and Watts (DEABM).  We already know these are
+    going start or are going to get stiff, so even better than
+    Doermand-Prince.
+  - Mathematica's infinite possibilities for styling graphics,
+    scripting, orchestrating, extending, and exploring
+  - Written in a language that is rich with "scientific methods"
+    e.g. has e.g. Hermite Polynomials built-in.
+  - Parallelization opportunities abound because its easy to subdivide
+    a number of these methods into subregions and then
+    combine. (Split-Apply-Combine)
+  - I can't tell if this package is slow, or just that accurate images
+    without jagged edges just take a long time to compute. Note that
+    parallelization may be found at the frame/configuration/atom level
+    as well, it does not have to be serial.  Again just getting this
+    stood up, many order-saving optimizations to come.
+  - Other packages for QTAIM exist and they can be interfaced
+    e.g. through files and/or linking.  These functions should work
+    with interpolated functions as well.  I am currently investigating
+    how [[https://aoterodelaroza.github.io/critic2][Critic2]]'s results can be utilized.  Its routines cover
+    additional domains such as solid state and this package could be
+    "just graphics" in certain cases.
+  - There are some dumb things in here that have fixes, e.g. calling
+    derivative components separately. No primitive cutoffs with
+    distance pre-screen. Some routines here are simply placeholders
+    and may be optimized. (In case you are "concerned", I'm just
+    establishing a foothold. And addressing my own perfectionism.  :-)
+    
+* Contact
 
+  Please send suggestions/comments to:
+
+  Eric Brown ecbrown@ericcbrown.com
+
+  or open an issue. I am especially interested in new chemistry that
+  you would like to share either as early ideas or results you want to
+  showcase in notebook form.
