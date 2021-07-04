@@ -16,8 +16,10 @@ Q. Are atoms discernible in molecules?
 
 A. Yes, an atom can be defined as the union of steepest ascent
 gradient paths through the electron density, and its attractor. These
-atoms are individually proper quantum systmes exhibiting the same
+atoms are individually proper quantum systems exhibiting the same
 boundary conditions that are applied to the molecule as a whole.
+
+All examples here are for water molecule (H2O):
 
 [[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/atoms-are-defined-as-the-union-of-gradient-paths-and-attractor.png?raw=true]]]]
 
