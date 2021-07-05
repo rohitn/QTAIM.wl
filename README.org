@@ -17,9 +17,10 @@ Q. Are atoms discernible in molecules?
 A. Yes, an atom can be defined as the union of steepest ascent
 gradient paths through the electron density, and its attractor. These
 atoms are individually proper quantum systems exhibiting the same
-boundary conditions that are applied to the molecule as a whole.
+boundary conditions that are applied to the molecule as a
+whole. (Zero-flux condition)
 
-All examples here are for water molecule (H2O):
+All examples here are for water molecule (H2O).
 
 [[https://github.com/ecbrown/QTAIM.wl/blob/master/resource/atoms-are-defined-as-the-union-of-gradient-paths-and-attractor.png?raw=true]]]]
 
@@ -37,7 +38,7 @@ e.g. spherical polar grids. This reduces a certain kind of artifact
 that I often see. (Though this can be done when appropriate.)
 
 Also, Wolfram Language/Mathematica has a nice graphics grammar, that
-make composing tailored graphics easy and possible.
+make composing tailored graphics easy and the results are nice.
 
 Wolfram Engine is basically free for certain use, so there's much less
 to complain about concerning Wolfram Language as an implementation. A
